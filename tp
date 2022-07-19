@@ -1,0 +1,119 @@
+from asyncio.windows_events import NULL
+import numbers
+import numpy as np
+import itertools
+weight_kg = [81.65, 97.52, 95.25, 92.98, 86.18, 88.45]
+
+
+# Create a numpy array np_weight_kg from weight_kg
+np_weight = np.array(weight_kg)
+
+# Create np_weight_lbs from np_weight_kg
+pounds = np_weight*2.2
+
+# Print out np_weight_lbs
+print(pounds)
+
+
+# this is a null statement which does nothing when executed, useful as a placeholder.
+pass
+
+
+sentence = "the quick brown fox jumps over the lazy dog"
+words = sentence.split()
+# print(words)
+word_lengths = []
+for word in words:
+    if word == "the":
+        word_lengths.append(len(word))
+print(words)
+print(word_lengths)
+
+# print F shape
+
+
+numbers = [5, 2, 5, 2, 2]
+for num in numbers:
+    for n in range(1, num+1):
+        print("the number is", (n))
+
+
+# program to find largest number in the list
+
+
+numbers = [425, 23, 8, 44, 9, 85, 11]
+temp = NULL
+for num in numbers:
+    if num > temp:
+        temp = num
+
+print("The largest number is: ", (temp))
+
+
+# array of teams, 'everton', 'tottenham', ['liverpool2', 'chelsea2']
+bookings = [['arsenal', 'manchester'], ['liverpool', 'chelsea'], [
+    'liverpool2', 'chelsea2'], ['liverpool3', 'chelsea3'], ['liverpool4', 'chelsea4']]
+
+
+def mixTeams(bookings):
+    combos = []
+    # loop into bundles of 2
+    for bundle in bookings:
+        # loop into each team in the bundle
+        combos.append(bundle)
+        for team in bundle:
+            # for teams
+            temp_team = [[bundle][0], [team][0]]
+            # append the team to the combos list
+            combos.append(temp_team)
+
+     # return combos
+    print(combos)
+
+# using itertools.combinations
+
+
+def iter(bookings):
+    temp_lista = []
+    temp_listb = []
+    c = []
+    for outer in bookings:
+        # execute if list len > 1
+        temp_lista.append(outer)
+        if len(bookings) > 1:
+            i = 1
+            for inner in bookings:
+                temp_listb.append(outer[i])
+                # i += 1
+                c.append(list(itertools.product(temp_lista, temp_listb)))
+
+    print(c)
+    print(len(bookings))
+    # print(f'temp_lista: {temp_lista}')
+    # print(f'temp_listb: {temp_listb}')
+
+
+# 3rd
+def outer(bookings):
+    count = 0
+    combos = []
+    for outer in bookings:
+        for inner in bookings:
+            temp_list = [outer[0], inner[1]]
+
+            combos.append(temp_list)
+            if count >= 1:
+                combos.append([outer[0], inner[0]])
+        count += 1
+    # print(combos)
+    for item in combos:
+        print(item)
+    print(f'count: {count}')
+    length = len(combos)
+    print(f'items are: {length}')
+
+
+# mixTeams(bookings)
+# iter(bookings)
+outer(bookings)
+# bookings = [['arsenal', 'manchester'], ['liverpool', 'chelsea'], ['liverpool2', 'chelsea2']]
