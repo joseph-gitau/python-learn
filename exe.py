@@ -6,7 +6,7 @@ def inputs():
 
     user1 = ""
     user2 = ""
-    # check if 'ok' keyword is typed to stop
+    # check if 'ok' keyword is typed to stops
     while user1 != 'ok' or user2 != 'ok':
         # for ensuring there are a pair of two teams
         count = 0
