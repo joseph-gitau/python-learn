@@ -1,4 +1,6 @@
+
 import itertools
+from re import A
 # from colorama import *
 
 combos = []
@@ -60,10 +62,13 @@ def inputs():
     # print(combos)
     return combos
 
-
-def iterator(combos, pos):
+# map possibilities to teams using dictionary
+def iterator(pos , combos):
+    # combos = [['a', 'b']]
+    team_store = []
+    store_dict = []
     c_length = len(combos)
-    outcomes = ('win', 'los', 'draw')
+    outcomes = ('win', 'loose', 'draw')
     teams = c_length
     team_outcomes = [outcomes] * teams
     iterator = itertools.product(*team_outcomes)
@@ -72,6 +77,31 @@ def iterator(combos, pos):
     pos.append(possible_solutions)
     # pos = iterator
     print(f"possibilities: {length} => {possible_solutions}")
+    # map possibiities to teams
+    print(combos)
+    for team in combos:
+        temp_team = team[0]
+        team_store.append(temp_team)
+        
+        
+    print(f"first team: {team_store}")
+        
+    # single possibility
+    for item in possible_solutions:
+        temp_store = []
+        for item_inner in item:
+            
+            temp_store.append(item_inner)
+            # dictionary containing teams and their outcomes
+        dictionary = dict(zip(team_store, temp_store))
+        store_dict.append(dictionary)
+            
+    print(store_dict)
+    store_len = len(store_dict)
+    print(store_len)
+    # test
+    print(team_store)
+    print(temp_store)
     return possible_solutions
     return pos
 
@@ -94,12 +124,8 @@ def show(combos, pos):
     print(f"possibilities:=> {pos}")
 
 
-def test():
-    pass
-
-
 # functions
 # raw()
 inputs()
-iterator(combos, pos)
-show(combos, pos)
+iterator(pos, combos)
+# show(combos, pos)
